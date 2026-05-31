@@ -1,0 +1,46 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "Kafka Monitoring",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Kafka Broker Requests",
+        "targets": [
+          {
+            "expr": "rate(kafka_server_broker_topic_metrics_messages_in_total[1m])",
+            "legendFormat": "Messages In"
+          },
+          {
+            "expr": "rate(kafka_server_broker_topic_metrics_bytes_in_total[1m])",
+            "legendFormat": "Bytes In"
+          },
+          {
+            "expr": "rate(kafka_server_broker_topic_metrics_bytes_out_total[1m])",
+            "legendFormat": "Bytes Out"
+          }
+        ]
+      },
+      {
+        "type": "graph",
+        "title": "Consumer Lag",
+        "targets": [
+          {
+            "expr": "kafka_consumer_group_lag",
+            "legendFormat": "{{group}}"
+          }
+        ]
+      },
+      {
+        "type": "graph",
+        "title": "Partition Count",
+        "targets": [
+          {
+            "expr": "kafka_server_broker_topic_metrics_partition_count",
+            "legendFormat": "Partitions"
+          }
+        ]
+      }
+    ]
+  }
+}
